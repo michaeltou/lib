@@ -1,0 +1,30 @@
+package com.trade.json;
+
+import net.sf.json.JSONObject;
+
+import com.trade.user.User;
+
+public class MyTest {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		User user = new User();
+		user.setUserId("123456");
+		user.setUserName("michael tou");
+
+		// 模型转换为string类型的结果
+		String jsonResultStr = JSONObject.fromObject(user).toString();
+		System.out.println(jsonResultStr);
+
+		
+		  //string json字符串转换为对象的结果
+		JSONObject jsonObject = JSONObject.fromObject(jsonResultStr);
+		User anotherUser = (User) JSONObject.toBean(jsonObject, User.class);
+		System.out.println(anotherUser.getUserName());
+	}
+
+}
